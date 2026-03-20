@@ -9,3 +9,4 @@ class Config:
     SQLALCHEMY_DATABASE_URI = os.getenv("DATABASE_URI", "sqlite:///skillsync.db")
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     MAX_CONTENT_LENGTH = 5 * 1024 * 1024  
+    UPLOAD_FOLDER = os.path.join(os.path.dirname(__file__), "uploads")

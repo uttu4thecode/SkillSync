@@ -22,7 +22,7 @@ def create_app():
     app.register_blueprint(resume_bp, url_prefix="/api/resume")
 
     with app.app_context():
-        from app.models.user import User
+        from app.models.user import User, Resume
         db.create_all()
 
     return app

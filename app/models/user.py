@@ -17,3 +17,21 @@ class User(db.Model):
             "email": self.email,
             "created_at": self.created_at.isoformat()
         }
+
+
+class Resume(db.Model):
+    __tablename__ = "resumes"
+
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+    filename = db.Column(db.String(200), nullable=False)
+    extracted_text = db.Column(db.Text, nullable=False)
+    uploaded_at = db.Column(db.DateTime, default=datetime.utcnow)
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "user_id": self.user_id,
+            "filename": self.filename,
+            "uploaded_at": self.uploaded_at.isoformat()
+        }
