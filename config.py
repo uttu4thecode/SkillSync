@@ -1,5 +1,6 @@
 import os
 from dotenv import load_dotenv
+from datetime import timedelta
 
 load_dotenv()
 
@@ -10,3 +11,4 @@ class Config:
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     MAX_CONTENT_LENGTH = 5 * 1024 * 1024  
     UPLOAD_FOLDER = os.path.join(os.path.dirname(__file__), "uploads")
+    JWT_ACCESS_TOKEN_EXPIRES = timedelta(hours=24)
