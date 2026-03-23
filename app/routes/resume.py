@@ -9,9 +9,15 @@ import uuid
 resume_bp = Blueprint("resume", __name__)
 
 
-@resume_bp.route("/upload", methods=["POST"])
+@resume_bp.route("/upload", methods=["POST", "OPTIONS"])
 @jwt_required()
 def upload_resume():
+    
+    from flask import make_response
+    if request.method == "OPTIONS":
+        return make_response("", 200)
+    
+    
     user_id = get_jwt_identity()
 
     if "file" not in request.files:
@@ -88,4 +94,37 @@ def analyze():
         "status": "success",
         "scan_id": scan.id,
         "result": result
+    }), 200
+    
+    
+@resume_bp.route("/history", methods=["GET"])
+@jwt_required()
+def history():
+    user_id = get_jwt_identity()
+
+    scans = ScanResult.query.filter_by(user_id=user_id).order_by(ScanResult.created_at.desc()).all()
+
+    if not scans:
+        return jsonify({"status": "success", "message": "No scans found", "scans": []}), 200
+
+    return jsonify({
+        "status": "success",
+        "total": len(scans),
+        "scans": [scan.to_dict() for scan in scans]
+    }), 200
+
+
+@resume_bp.route("/result/<int:scan_id>", methods=["GET"])
+@jwt_required()
+def get_result(scan_id):
+    user_id = get_jwt_identity()
+
+    scan = ScanResult.query.filter_by(id=scan_id, user_id=user_id).first()
+
+    if not scan:
+        return jsonify({"status": "error", "message": "Scan result not found"}), 404
+
+    return jsonify({
+        "status": "success",
+        "result": scan.to_dict()
     }), 200

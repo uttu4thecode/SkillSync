@@ -53,3 +53,14 @@ def login():
         "token": access_token,
         "user": user.to_dict()
     }), 200
+    
+    
+from flask import render_template
+
+@auth_bp.route("/")
+def index():
+    return render_template("index.html")
+
+@auth_bp.route("/dashboard")
+def dashboard():
+    return render_template("dashboard.html")

@@ -13,7 +13,7 @@ def create_app():
 
     db.init_app(app)
     jwt.init_app(app)
-    CORS(app)
+    CORS(app, resources={r"/api/*": {"origins": "*"}}, supports_credentials=True)
 
     from app.routes.auth import auth_bp
     from app.routes.resume import resume_bp

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillSync — Dashboard</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <h2>SkillSync</h2>
+        <div>
+            <span id="nav-username"></span>
+            <button type="button" class="btn-logout" onclick="logout()">Logout</button>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <div class="left-panel">
+            <div class="card">
+                <h3>Upload Resume</h3>
+                <input type="file" id="resume-file" accept=".pdf,.docx" />
+                <p id="file-name" style="font-size:0.85rem;color:#888;margin:8px 0;">No file selected</p>
+                <button type="button" class="btn-primary" onclick="uploadResume(event); return false;">Upload</button>
+                <p id="upload-message" class="message"></p>
+            </div>
+
+            <div class="card">
+                <h3>Analyze Against Job Description</h3>
+                <textarea id="job-description" rows="6" placeholder="Paste the job description here..."></textarea>
+                <button type="button" class="btn-primary" onclick="analyze(event)">Analyze Resume</button>
+                <p id="analyze-message" class="message"></p>
+            </div>
+        </div>
+
+        <div class="right-panel">
+            <div class="card" id="result-card" style="display:none">
+                <h3>Analysis Result</h3>
+                <div class="score-container">
+                    <div class="score-circle" id="score-circle">
+                        <span id="score-value">0%</span>
+                        <small>Match Score</small>
+                    </div>
+                </div>
+                <div class="score-breakdown">
+                    <div class="breakdown-item">
+                        <span>Similarity Score</span>
+                        <div class="progress-bar"><div class="progress" id="similarity-bar"></div></div>
+                        <span id="similarity-value"></span>
+                    </div>
+                    <div class="breakdown-item">
+                        <span>Skill Match</span>
+                        <div class="progress-bar"><div class="progress" id="skill-bar"></div></div>
+                        <span id="skill-value"></span>
+                    </div>
+                </div>
+                <div class="skills-section">
+                    <h4>Matched Skills</h4>
+                    <div id="matched-skills" class="skills-container"></div>
+                </div>
+                <div class="skills-section">
+                    <h4>Missing Skills</h4>
+                    <div id="missing-skills" class="skills-container"></div>
+                </div>
+                <div class="suggestions-section">
+                    <h4>Suggestions</h4>
+                    <ul id="suggestions-list"></ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Past Scans</h3>
+                <div id="history-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/dashboard.js"></script>
+</body>
+</html>

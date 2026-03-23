@@ -1,0 +1,27 @@
+# Virtual environment
+venv/
+
+# Database
+*.db
+
+# Environment variables (NEVER upload this)
+.env
+
+# Uploaded resumes (user data)
+uploads/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# VS Code settings
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
