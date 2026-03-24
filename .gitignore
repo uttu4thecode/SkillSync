@@ -8,7 +8,8 @@ venv/
 .env
 
 # Uploaded resumes (user data)
-uploads/
+uploads/*
+!uploads/.gitkeep
 
 # Python cache
 __pycache__/
