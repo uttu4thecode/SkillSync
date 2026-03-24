@@ -2,7 +2,7 @@ const API = "https://skillsync-production-f866.up.railway.app/api";
 const token = localStorage.getItem("token");
 let currentResumeId = null;
 
-if (!token) window.location.href = "index.html";
+if (!token) window.location.href = "/api/auth/";
 
 document.getElementById("nav-username").textContent = "Hi, " + localStorage.getItem("username");
 
