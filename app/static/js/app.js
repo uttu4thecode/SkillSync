@@ -1,4 +1,4 @@
-const API = "http://127.0.0.1:5000/api";
+const API = "https://skillsync-production-f866.up.railway.app/api";
 
 function showTab(tab) {
     document.getElementById("login-form").style.display = tab === "login" ? "block" : "none";
