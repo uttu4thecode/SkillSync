@@ -16,7 +16,7 @@ document.getElementById("resume-file").addEventListener("change", function() {
 
 function logout() {
     localStorage.clear();
-    window.location.href = "index.html";
+    window.location.href = "/api/auth/";
 }
 
 async function uploadResume(event) {
