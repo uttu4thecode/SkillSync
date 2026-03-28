@@ -1,102 +1,118 @@
-# SkillSync — AI-Powered ATS Resume Scorer
+# 🚀 SkillSync
 
-SkillSync is a full-stack AI-powered web application that analyzes resumes against job descriptions using NLP to generate a match score and detailed feedback.
+> AI-powered platform to analyze resumes, track skills, and identify skill gaps.
 
-## Features
+---
 
-- Upload resume in PDF or DOCX format
-- Paste any job description and get instant analysis
-- AI-powered match score using TF-IDF and cosine similarity
-- Identifies matched skills, missing skills and keyword gaps
-- Actionable suggestions to improve your resume
-- Scan history to track previous analyses
-- Secure JWT-based user authentication
+## 📌 Overview
 
-## Tech Stack
+SkillSync helps users understand their current skill set and identify what they need to improve to reach their target roles.
+It combines resume analysis with intelligent recommendations to provide actionable insights.
 
-**Backend:** Python, Flask, Flask-SQLAlchemy, Flask-JWT-Extended
+---
 
-**NLP:** scikit-learn, spaCy, TF-IDF Vectorization, Cosine Similarity
+## 🔥 Features
 
-**Database:** SQLite (development), PostgreSQL (production)
+* 📄 Resume parsing and analysis
+* 🧠 Skill extraction and gap detection
+* 📊 Dashboard with insights and metrics
+* 🔐 User authentication (JWT-based)
+* 📁 History tracking of previous analyses
 
-**Frontend:** HTML, CSS, JavaScript
+---
 
-**File Parsing:** pdfplumber, python-docx
+## 🛠 Tech Stack
 
-## Project Structure
-```
-skillsync/
-├── app/
-│   ├── __init__.py         # App factory
-│   ├── routes/             # API endpoints
-│   ├── models/             # Database models
-│   ├── services/           # NLP engine
-│   ├── utils/              # File parser
-│   ├── static/             # CSS and JS
-│   └── templates/          # HTML pages
-├── config.py               # Configuration
-├── run.py                  # Entry point
-└── requirements.txt        # Dependencies
-```
+**Backend**
 
-## API Endpoints
+* Flask
+* Flask-JWT-Extended
+* SQLAlchemy
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/api/auth/register` | Register new user |
-| POST | `/api/auth/login` | Login and get token |
-| POST | `/api/resume/upload` | Upload resume file |
-| POST | `/api/resume/analyze` | Analyze against JD |
-| GET | `/api/resume/history` | Get scan history |
-| GET | `/api/resume/result/<id>` | Get single result |
+**Frontend**
 
-## Setup Instructions
+* HTML, CSS, JavaScript
 
-### 1. Clone the repository
+**Database**
+
+* SQLite / PostgreSQL
+
+---
+
+## 📸 Screenshots
+
+<!-- Add your screenshots here -->
+
+<!-- Example:
+![Dashboard](./screenshots/dashboard.png)
+-->
+
+---
+
+## 🚀 Live Demo
+
+👉 *Coming Soon*
+*(Deploy on Railway / Render and add link here)*
+
+---
+
+## ⚙️ Installation & Setup
+
 ```bash
-git clone https://github.com/yourusername/skillsync.git
-cd skillsync
-```
+# Clone the repository
+git clone https://github.com/uttu4thecode/SkillSync.git
 
-### 2. Create virtual environment
-```bash
+# Navigate to project directory
+cd SkillSync
+
+# Create virtual environment
 python -m venv venv
+
+# Activate virtual environment
+# Windows
 venv\Scripts\activate
-```
 
-### 3. Install dependencies
-```bash
+# Install dependencies
 pip install -r requirements.txt
-python -m spacy download en_core_web_sm
+
+# Run the app
+python app.py
 ```
 
-### 4. Create `.env` file
-```
-SECRET_KEY=your_secret_key
-JWT_SECRET_KEY=your_jwt_secret
-DATABASE_URI=sqlite:///skillsync.db
-```
+---
 
-### 5. Run the application
-```bash
-python run.py
-```
+## 🧪 Future Improvements
 
-### 6. Open in browser
-```
-http://127.0.0.1:5000/api/auth/
-```
+* ✅ Add AI-based recommendations
+* ✅ Improve UI/UX with React
+* ✅ Add unit and integration tests
+* ✅ Implement CI/CD pipeline
+* ✅ Role-based skill suggestions
 
-## How It Works
+---
 
-1. User registers and logs in
-2. Upload your resume (PDF or DOCX)
-3. Paste the job description
-4. SkillSync extracts skills from both using NLP
-5. Calculates match score using TF-IDF cosine similarity
-6. Returns matched skills, missing skills and improvement suggestions
+## 🧠 Key Learnings
 
-## Author
+* Building scalable Flask backend
+* Implementing JWT authentication
+* Designing REST APIs
+* Structuring full-stack applications
 
-Built by Utkarsh635
+---
+
+## 🤝 Contributing
+
+Contributions are welcome!
+Feel free to fork this repo and submit a pull request.
+
+---
+
+## 📬 Contact
+
+If you’d like to connect or collaborate:
+
+* GitHub: https://github.com/uttu4thecode
+
+---
+
+⭐ If you found this project useful, consider giving it a star!
