@@ -13,3 +13,4 @@ class Config:
     UPLOAD_FOLDER = os.path.join(os.path.dirname(__file__), "uploads")
     JWT_ACCESS_TOKEN_EXPIRES = timedelta(hours=24)
     DEBUG = os.getenv("DEBUG", "False") == "True"
+    GROQ_API_KEY = os.getenv("GROQ_API_KEY")

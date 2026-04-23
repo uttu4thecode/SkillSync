@@ -1,5 +1,6 @@
 from app import db
 from datetime import datetime
+import json
 
 class User(db.Model):
     __tablename__ = "users"
@@ -50,6 +51,8 @@ class ScanResult(db.Model):
     matched_skills = db.Column(db.Text, nullable=False)
     missing_skills = db.Column(db.Text, nullable=False)
     suggestions = db.Column(db.Text, nullable=False)
+    learning_paths = db.Column(db.Text, nullable=True, default="[]")
+    job_predictions = db.Column(db.Text, nullable=True, default="[]")
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
     def to_dict(self):
@@ -62,5 +65,7 @@ class ScanResult(db.Model):
             "matched_skills": self.matched_skills.split(","),
             "missing_skills": self.missing_skills.split(","),
             "suggestions": self.suggestions.split("|"),
+            "learning_paths": json.loads(self.learning_paths) if self.learning_paths else [],
+            "job_predictions": json.loads(self.job_predictions) if self.job_predictions else [],
             "created_at": self.created_at.isoformat()
         }

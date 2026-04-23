@@ -85,7 +85,9 @@ def analyze():
         skill_match_score=result["skill_match_score"],
         matched_skills=",".join(result["matched_skills"]),
         missing_skills=",".join(result["missing_skills"]),
-        suggestions="|".join(result["suggestions"])
+        suggestions="|".join(result["suggestions"]),
+        learning_paths=json.dumps(result["learning_paths"]),
+        job_predictions=json.dumps(result["job_predictions"])
     )
     db.session.add(scan)
     db.session.commit()
@@ -128,3 +130,37 @@ def get_result(scan_id):
         "status": "success",
         "result": scan.to_dict()
     }), 200
+
+
+@resume_bp.route("/ai-insights", methods=["POST"])
+@jwt_required()
+def ai_insights():
+    from app.services.grok_engine import generate_ai_insights
+    user_id = get_jwt_identity()
+    data = request.get_json()
+
+    scan_id = data.get("scan_id")
+    if not scan_id:
+        return jsonify({"status": "error", "message": "scan_id is required"}), 400
+
+    scan = ScanResult.query.filter_by(id=scan_id, user_id=user_id).first()
+    if not scan:
+        return jsonify({"status": "error", "message": "Scan not found"}), 404
+
+    resume = Resume.query.filter_by(id=scan.resume_id, user_id=user_id).first()
+    if not resume:
+        return jsonify({"status": "error", "message": "Resume not found"}), 404
+
+    api_key = current_app.config.get("GROQ_API_KEY", "")
+    matched = scan.matched_skills.split(",") if scan.matched_skills else []
+    missing = scan.missing_skills.split(",") if scan.missing_skills else []
+
+    result = generate_ai_insights(
+        api_key=api_key,
+        matched_skills=matched,
+        missing_skills=missing,
+        job_description=scan.job_description,
+        resume_text=resume.extracted_text
+    )
+
+    return jsonify(result), 200

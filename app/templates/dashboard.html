@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SkillSync — Dashboard</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard_extra.css') }}">
 </head>
+
 <body>
     <nav class="navbar">
-        <h2>SkillSync</h2>
+        <h2>⚡ SkillSync</h2>
         <div>
             <span id="nav-username"></span>
             <button type="button" class="btn-logout" onclick="logout()">Logout</button>
@@ -16,26 +19,36 @@
     </nav>
 
     <div class="dashboard-container">
+        <!-- LEFT PANEL -->
         <div class="left-panel">
             <div class="card">
-                <h3>Upload Resume</h3>
+                <h3>📄 Upload Resume</h3>
                 <input type="file" id="resume-file" accept=".pdf,.docx" />
                 <p id="file-name" style="font-size:0.85rem;color:#888;margin:8px 0;">No file selected</p>
-                <button type="button" class="btn-primary" onclick="uploadResume(event); return false;">Upload</button>
+                <button type="button" class="btn-primary" onclick="uploadResume(event)">Upload</button>
                 <p id="upload-message" class="message"></p>
             </div>
 
             <div class="card">
-                <h3>Analyze Against Job Description</h3>
-                <textarea id="job-description" rows="6" placeholder="Paste the job description here..."></textarea>
+                <h3>🔍 Analyze Against Job Description</h3>
+                <textarea id="job-description" rows="7" placeholder="Paste the full job description here..."></textarea>
                 <button type="button" class="btn-primary" onclick="analyze(event)">Analyze Resume</button>
                 <p id="analyze-message" class="message"></p>
             </div>
+
+            <div class="card">
+                <h3>📋 Past Scans</h3>
+                <div id="history-list"></div>
+            </div>
         </div>
 
+        <!-- RIGHT PANEL -->
         <div class="right-panel">
+
+            <!-- NLP ANALYSIS RESULT (always visible after analysis) -->
             <div class="card" id="result-card" style="display:none">
-                <h3>Analysis Result</h3>
+                <h3>📊 Analysis Result <span style="font-size:0.75rem;color:#888;font-weight:400;">(NLP-powered)</span>
+                </h3>
                 <div class="score-container">
                     <div class="score-circle" id="score-circle">
                         <span id="score-value">0%</span>
@@ -45,36 +58,85 @@
                 <div class="score-breakdown">
                     <div class="breakdown-item">
                         <span>Similarity Score</span>
-                        <div class="progress-bar"><div class="progress" id="similarity-bar"></div></div>
+                        <div class="progress-bar">
+                            <div class="progress" id="similarity-bar"></div>
+                        </div>
                         <span id="similarity-value"></span>
                     </div>
                     <div class="breakdown-item">
                         <span>Skill Match</span>
-                        <div class="progress-bar"><div class="progress" id="skill-bar"></div></div>
+                        <div class="progress-bar">
+                            <div class="progress" id="skill-bar"></div>
+                        </div>
                         <span id="skill-value"></span>
                     </div>
                 </div>
                 <div class="skills-section">
-                    <h4>Matched Skills</h4>
+                    <h4>✅ Matched Skills</h4>
                     <div id="matched-skills" class="skills-container"></div>
                 </div>
                 <div class="skills-section">
-                    <h4>Missing Skills</h4>
+                    <h4>❌ Missing Skills</h4>
                     <div id="missing-skills" class="skills-container"></div>
                 </div>
                 <div class="suggestions-section">
-                    <h4>Suggestions</h4>
+                    <h4>💡 Suggestions</h4>
                     <ul id="suggestions-list"></ul>
                 </div>
+
+                <!-- AI INSIGHTS BUTTON -->
+                <button type="button" class="btn-ai" id="btn-ai-insights" onclick="loadAIInsights()">
+                    🤖 Generate Full AI Career Report
+                </button>
+                <p id="ai-loading-msg"
+                    style="display:none;text-align:center;color:#6c63ff;font-size:0.9rem;margin-top:10px;">⏳ AI is
+                    analyzing your profile...</p>
             </div>
 
-            <div class="card">
-                <h3>Past Scans</h3>
-                <div id="history-list"></div>
+            <!-- AI INSIGHTS PANEL -->
+            <div id="ai-insights-panel" style="display:none;">
+
+                <!-- SKILL ANALYSIS -->
+                <div class="card ai-card">
+                    <h3>🧠 Skill Analysis</h3>
+                    <div id="skill-analysis-content"></div>
+                </div>
+
+                <!-- LEARNING PATH -->
+                <div class="card ai-card">
+                    <h3>📚 Personalized Learning Path</h3>
+                    <div id="learning-path-content"></div>
+                </div>
+
+                <!-- JOB PREDICTIONS -->
+                <div class="card ai-card">
+                    <h3>💼 Jobs You Can Apply For Right Now</h3>
+                    <div id="job-predictions-content"></div>
+                </div>
+
+                <!-- CAREER ROADMAP -->
+                <div class="card ai-card">
+                    <h3>🗺️ Career Roadmap</h3>
+                    <div id="career-roadmap-content"></div>
+                </div>
+
+                <!-- INTERVIEW PREP -->
+                <div class="card ai-card">
+                    <h3>🎯 Interview Prep Questions</h3>
+                    <div id="interview-prep-content"></div>
+                </div>
+
+                <!-- RESUME TIPS -->
+                <div class="card ai-card">
+                    <h3>✍️ Resume Improvement Tips</h3>
+                    <div id="resume-tips-content"></div>
+                </div>
+
             </div>
         </div>
     </div>
 
     <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
 </body>
+
 </html>

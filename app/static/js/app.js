@@ -1,4 +1,4 @@
-const API = "https://skillsync-production-f866.up.railway.app/api";
+const API = "/api";
 
 function showTab(tab) {
     document.getElementById("login-form").style.display = tab === "login" ? "block" : "none";
