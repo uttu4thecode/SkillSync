@@ -359,6 +359,72 @@ input:focus, textarea:focus {
     line-height: 1.5;
 }
 
+/* Learning Path */
+.learning-path-section { margin-top: 20px; }
+
+.learning-path-section h4 {
+    font-size: 0.88rem;
+    color: #666;
+    margin-bottom: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.learning-path-section ul { padding-left: 0; list-style: none; }
+
+.learning-path-section li {
+    font-size: 0.88rem;
+    color: #555;
+    margin-bottom: 8px;
+    padding: 10px 14px;
+    background: #eef2ff;
+    border-left: 3px solid #6366f1;
+    border-radius: 0 8px 8px 0;
+    line-height: 1.5;
+}
+
+.learning-path-section li a {
+    color: #6366f1;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.learning-path-section li a:hover {
+    color: #4338ca;
+    text-decoration: underline;
+}
+
+/* Job Predictions */
+.job-predictions-section { margin-top: 20px; }
+
+.job-predictions-section h4 {
+    font-size: 0.88rem;
+    color: #666;
+    margin-bottom: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.job-predictions-section ul { padding-left: 0; list-style: none; }
+
+.job-predictions-section li {
+    font-size: 0.88rem;
+    color: #555;
+    margin-bottom: 8px;
+    padding: 12px 14px;
+    background: #f0fdf4;
+    border-left: 3px solid #22c55e;
+    border-radius: 0 8px 8px 0;
+    line-height: 1.5;
+}
+
+.job-predictions-section li strong {
+    color: #16a34a;
+}
+
 /* History */
 .history-item {
     padding: 14px 16px;

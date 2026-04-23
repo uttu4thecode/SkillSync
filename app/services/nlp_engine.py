@@ -54,6 +54,37 @@ def calculate_similarity(resume_text, jd_text):
         return 0.0
 
 
+def generate_learning_paths(missing_skills):
+    paths = []
+    for skill in missing_skills:
+        paths.append({
+            "skill": skill,
+            "url": f"https://www.youtube.com/results?search_query={skill.replace(' ', '+')}+tutorial+for+beginners",
+            "platform": "YouTube"
+        })
+    return paths
+
+
+def predict_jobs(skills):
+    jobs = []
+    skills_lower = [s.lower() for s in skills]
+    if "python" in skills_lower and ("machine learning" in skills_lower or "data science" in skills_lower):
+        jobs.append({"title": "Data Scientist", "salary": "$100k - $140k"})
+    if "react" in skills_lower or "angular" in skills_lower or "javascript" in skills_lower:
+        jobs.append({"title": "Frontend Developer", "salary": "$80k - $120k"})
+    if "node.js" in skills_lower or "nodejs" in skills_lower or "django" in skills_lower or "flask" in skills_lower or "java" in skills_lower:
+        jobs.append({"title": "Backend Developer", "salary": "$90k - $130k"})
+    if "docker" in skills_lower and "kubernetes" in skills_lower:
+        jobs.append({"title": "DevOps Engineer", "salary": "$110k - $150k"})
+    if "sql" in skills_lower or "mysql" in skills_lower or "postgresql" in skills_lower:
+        jobs.append({"title": "Data Analyst", "salary": "$70k - $100k"})
+    
+    if not jobs:
+        jobs.append({"title": "Software Engineer", "salary": "$70k - $110k"})
+        
+    return jobs
+
+
 def analyze_resume(resume_text, jd_text):
     """Main function — returns full analysis."""
 
@@ -86,6 +117,9 @@ def analyze_resume(resume_text, jd_text):
     else:
         suggestions.append("Excellent match! Your resume is well aligned with this job.")
 
+    learning_paths = generate_learning_paths(list(missing_skills))
+    job_predictions = predict_jobs(list(resume_skills))
+
     return {
         "final_score": final_score,
         "similarity_score": similarity_score,
@@ -93,5 +127,7 @@ def analyze_resume(resume_text, jd_text):
         "matched_skills": list(matched_skills),
         "missing_skills": list(missing_skills),
         "missing_keywords": list(missing_keywords)[:10],
-        "suggestions": suggestions
+        "suggestions": suggestions,
+        "learning_paths": learning_paths,
+        "job_predictions": job_predictions
     }
