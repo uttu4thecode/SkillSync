@@ -1,29 +1,29 @@
-# 🚀 SkillSync
+#  SkillSync
 
 > Advanced AI-powered platform to analyze resumes, identify skill gaps, and provide personalized career growth paths.
 
 ---
 
-## 📌 Overview
+##  Overview
 
 SkillSync is a comprehensive professional development tool that bridges the gap between your current profile and your dream job. By combining **Natural Language Processing (NLP)** for precise skill extraction with **Advanced AI** for strategic career guidance, SkillSync provides users with a complete roadmap to professional success.
 
 ---
 
-## 🔥 Features
+##  Features
 
-*   **📄 Intelligent Resume Parsing:** Extract skills and experience using dedicated NLP engines.
-*   **🧠 Precision Skill Gap Detection:** Compare your resume against any job description to find exactly what's missing.
-*   **📚 Personalized Learning Paths:** AI-generated study plans featuring curated resources from YouTube, Coursera, and official documentation.
-*   **💼 Job Market Predictions:** Get recommendations for roles you can apply for right now, complete with estimated salary ranges and match scores.
-*   **🗺️ Interactive Career Roadmaps:** Step-by-step milestones to help you transition from your current level to your target role.
-*   **🎯 Interview Preparation:** Targeted technical and behavioral questions based on your profile and the target job.
-*   **✍️ Resume Optimization:** Actionable tips to improve your resume's impact and ATS compatibility.
-*   **🔐 Secure & Private:** Full user authentication and private history tracking.
+*   ** Intelligent Resume Parsing:** Extract skills and experience using dedicated NLP engines.
+*   ** Precision Skill Gap Detection:** Compare your resume against any job description to find exactly what's missing.
+*   ** Personalized Learning Paths:** AI-generated study plans featuring curated resources from YouTube, Coursera, and official documentation.
+*   ** Job Market Predictions:** Get recommendations for roles you can apply for right now, complete with estimated salary ranges and match scores.
+*   ** Interactive Career Roadmaps:** Step-by-step milestones to help you transition from your current level to your target role.
+*   ** Interview Preparation:** Targeted technical and behavioral questions based on your profile and the target job.
+*   ** Resume Optimization:** Actionable tips to improve your resume's impact and ATS compatibility.
+*   ** Secure & Private:** Full user authentication and private history tracking.
 
 ---
 
-## 🛠 Tech Stack
+##  Tech Stack
 
 **Backend**
 *   Flask (Python)
@@ -41,7 +41,7 @@ SkillSync is a comprehensive professional development tool that bridges the gap 
 
 ---
 
-## ⚙️ Installation & Setup
+##  Installation & Setup
 
 ```bash
 # Clone the repository
@@ -73,7 +73,7 @@ python run.py
 
 ---
 
-## 🧠 Key Learnings & Achievements
+##  Key Learnings & Achievements
 
 *   **NLP Implementation:** Integrated complex NLP logic for multi-format resume parsing (PDF/DOCX).
 *   **AI Orchestration:** Developed a sophisticated pipeline for generating structured career data from unstructured text.
@@ -82,7 +82,7 @@ python run.py
 
 ---
 
-## 🤝 Contributing
+##  Contributing
 
 Contributions are welcome! 
 1. Fork the Project
@@ -93,7 +93,7 @@ Contributions are welcome!
 
 ---
 
-## 📬 Contact
+##  Contact
 
 *   **Saurya** - [saurya992004](https://github.com/saurya992004)
 *   **Project Link:** [https://github.com/uttu4thecode/SkillSync](https://github.com/uttu4thecode/SkillSync)
